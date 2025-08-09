@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<PersonalExpenseTrackerWeb.Models.CategoryModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["PageTitle"] = "Categories";
+    ViewData["PageActionText"] = "+ New Category";
+    ViewData["PageActionUrl"] = "/Category/CreateOrEdit";
 }
 
 <h1>Index</h1>
@@ -42,5 +44,11 @@
         <a class="btn btn-sm no-a-decoration" href="/Category/CreateOrEdit/${CategoryId}">
             <i class="fa-solid fa-pen fa-lg"></i>    
         </a>
+        <form action="/Category/Delete/${CategoryId}" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm no-a-decoration" onclick="return confirm('Are you sure you want to delete this record')">
+                <i class="fa-solid fa-trash fa-lg" style="color:red"></i>
+            </button>
+        </form>
     </div>
 </script>

@@ -24,24 +24,6 @@ namespace PersonalExpenseTrackerWeb.Controllers
             return View(await _context.Categories.ToListAsync());
         }
 
-        // GET: Category/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var categoryModel = await _context.Categories
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-            if (categoryModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(categoryModel);
-        }
-
         // GET: Category/CreateOrEdit
         public IActionResult CreateOrEdit(int id=0)
         {
@@ -77,59 +59,6 @@ namespace PersonalExpenseTrackerWeb.Controllers
             return View(categoryModel);
         }
 
-        // POST: Category/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,Title,Icon,Type")] CategoryModel categoryModel)
-        {
-            if (id != categoryModel.CategoryId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(categoryModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoryModelExists(categoryModel.CategoryId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(categoryModel);
-        }
-
-        // GET: Category/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var categoryModel = await _context.Categories
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-            if (categoryModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(categoryModel);
-        }
-
         // POST: Category/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -143,11 +72,6 @@ namespace PersonalExpenseTrackerWeb.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool CategoryModelExists(int id)
-        {
-            return _context.Categories.Any(e => e.CategoryId == id);
         }
     }
 }
