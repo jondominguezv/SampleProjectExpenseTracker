@@ -42,7 +42,7 @@ namespace PersonalExpenseTrackerWeb.Controllers
             return View(categoryModel);
         }
 
-        // GET: Category/Create
+        // GET: Category/CreateOrEdit
         public IActionResult CreateOrEdit(int id=0)
         {
             if (id == 0)
@@ -55,7 +55,7 @@ namespace PersonalExpenseTrackerWeb.Controllers
             }
         }
 
-        // POST: Category/Create
+        // POST: Category/CreateOrEdit
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,7 +64,13 @@ namespace PersonalExpenseTrackerWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(categoryModel);
+                if (categoryModel.CategoryId == 0) {
+                    _context.Add(categoryModel);
+                }
+                else
+                {
+                    _context.Update(categoryModel);
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
