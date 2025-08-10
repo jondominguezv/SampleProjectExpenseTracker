@@ -12,11 +12,11 @@
                 <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
                 <div class="mb-3">
                     <ejs-textbox id="title" placeholder="Title" ejs-for="Title" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="Title" class="text-danger"></span>
+                    <span asp-validation-for="Title" class="text-danger fs-6"></span>
                 </div>
                 <div class="mb-3">
                     <ejs-textbox id="icon" placeholder="Icon" ejs-for="Icon" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="Icon" class="text-danger"></span>
+                    <span asp-validation-for="Icon" class="text-danger fs-6"></span>
                 </div>
                 <div class="mb-3">
                     <div class="e-btn-group custom-rbt-group">
@@ -27,7 +27,6 @@
                         <input type="radio" id="radioright" name="Type" value="Save" checked="@(Model.Type == "Save")" />
                         <label class="e-btn" for="radioright">Save</label>
                     </div>
-                    <span asp-validation-for="Type" class="text-danger"></span>
                 </div>
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
             </form>
@@ -41,6 +40,6 @@
 </div>
 
 
-@section Scripts {
+@* @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+} *@

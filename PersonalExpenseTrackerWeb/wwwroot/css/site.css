@@ -13,8 +13,13 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    font-family: "Inter";
+}
+
+*:not(.fa-solid):not(.fa):not(.e-icons) {
+    font-family: "Inter"
 }
 
 body {
@@ -49,10 +54,42 @@ body {
     border: 1px solid #fff;
 }
 
+/*Widgets*/
 .widget {
     border-radius: 1rem;
     background-color: #1e1e1e;
 }
+
+    .widget.summary > div:first-child {
+        background-color: #222b33;
+        padding: 1rem;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+
+        .widget.summary > div:first-child i {
+            font-weight: bold;
+        }
+
+    .widget.income > div:first-child {
+        color: #65da41;
+    }
+
+    .widget.expense > div:first-child {
+        color: #ff4e48;
+    }
+
+    .widget.save > div:first-child {
+        color: #edff00;
+    }
+
+    .widget.balance > div:first-child {
+        color: #2aa1ff;
+    }
+
+    .widget.chart {
+        padding: 5px;
+    }
 
 /*Grid*/
 .e-grid {
@@ -94,3 +131,37 @@ body {
     text-decoration: none !important;
     color: inherit !important;
 }
+
+.main-content{
+    margin-left: 300px;
+}
+
+#sidebar{
+    background-color: #1a1d21;
+    border-right: 1px dashed #292e35;
+    padding: 50px 20px;
+}
+    #sidebar .e-menu-wrapper{
+        width: 100%;
+        background-color: inherit;
+    }
+
+/*Menu*/
+#menu {
+    width: 100% !important;
+    background-color: inherit;
+    overflow: hidden;
+}
+
+    #menu .e-menu-item:not(.e-separator) {
+        height: 50px;
+        border-radius: 4px;
+    }
+
+    #menu .e-anchor-wrap {
+        display: inline-block;
+    }
+
+    #menu .e-menu-item .e-anchor-wrap span.e-menu-icon {
+        color: white;
+    }
