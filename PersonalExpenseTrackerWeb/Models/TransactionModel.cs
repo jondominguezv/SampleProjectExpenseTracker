@@ -9,7 +9,7 @@ namespace PersonalExpenseTrackerWeb.Models
         public int TransactionId { get; set; }
 
         public int CategoryId { get; set; }
-        public CategoryModel Category { get; set; }
+        public CategoryModel? Category { get; set; }
 
         public decimal Amount { get; set; }
 
